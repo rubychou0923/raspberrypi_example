@@ -1,0 +1,1 @@
+sudo rmmod hello.ko ; make ; sudo dmesg -C ; sudo insmod hello.ko ; sudo cat /proc/rf_status
