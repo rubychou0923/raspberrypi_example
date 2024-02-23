@@ -2,7 +2,7 @@
 
 * cd pinctrl
 
-* sudp apt install cmake
+* sudo apt install cmake
 
 * cat README.md
 cmake .
