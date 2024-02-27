@@ -4,26 +4,25 @@ init=1
 pinctrl set 2 op
 pinctrl set 3 op
 pinctrl set 4 op
+pinctrl set 2 dl
+pinctrl set 3 dl
+pinctrl set 4 dl
 
 while [ $init -eq 1 ]
 do
-pinctrl set 2 ip
-pinctrl set 2 pu
+pinctrl set 2 dh
+
+sleep 1
+pinctrl set 3 dh
 
 sleep 1
 
-pinctrl set 3 ip
-pinctrl set 3 pu
-
+pinctrl set 4 dh
 sleep 1
 
-pinctrl set 4 ip
-pinctrl set 4 pu
-sleep 1
-
-pinctrl set 2 op
-pinctrl set 3 op
-pinctrl set 4 op
+pinctrl set 2 dl
+pinctrl set 3 dl
+pinctrl set 4 dl
 
 sleep 1
 done
