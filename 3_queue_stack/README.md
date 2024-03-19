@@ -1,4 +1,6 @@
 
+From https://data-flair.training/blogs/stacks-and-queues-in-c/
+
 ![keyword](Stacks-and-queues-in-C.webp)
 ![keyword](Insertion-in-C-queue.webp)
 ![keyword](Deletion-in-C-queue.webp)
