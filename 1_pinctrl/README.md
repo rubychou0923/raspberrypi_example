@@ -71,3 +71,41 @@ ruby@raspberrypi:~/src/utils/pinctrl $ pinctrl
 
 * pinout
 ![image info](pinout.webp) 
+
+
+* datasheet
+https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
+
+```
+183 static void bcm2835_gpio_set_fsel(void *priv, unsigned gpio, const GPIO_FSEL_T func)
+184 {
+185     volatile uint32_t *base = priv;
+186     /* GPFSEL0-5 with 10 sels per reg, 3 bits per sel (so bits 0:29 used) */
+187     uint32_t reg = GPFSEL0 + (gpio / 10);
+188     uint32_t lsb = (gpio % 10) * 3;
+189     int fsel;
+190
+191     switch (func)
+192     {
+193     case GPIO_FSEL_INPUT: fsel = 0; break;
+194     case GPIO_FSEL_OUTPUT: fsel = 1; break;
+195     case GPIO_FSEL_FUNC0: fsel = 4; break;
+196     case GPIO_FSEL_FUNC1: fsel = 5; break;
+197     case GPIO_FSEL_FUNC2: fsel = 6; break;
+198     case GPIO_FSEL_FUNC3: fsel = 7; break;
+199     case GPIO_FSEL_FUNC4: fsel = 3; break;
+200     case GPIO_FSEL_FUNC5: fsel = 2; break;
+201     default:
+202         return;
+203     }
+204
+205     if (gpio < BCM2835_NUM_GPIOS)
+206         base[reg] = (base[reg] & ~(0x7 << lsb)) | (fsel << lsb);
+207
+208     printf("%s:%d gpio:%d, base[reg]=0x%x, value:0x%x\n",__func__,__LINE__,
+209         gpio,(unsigned int)(base+reg), (base[reg] & ~(0x7 << lsb)) | (fsel << lsb));
+210 }
+```
+
+
+pdf page 92
