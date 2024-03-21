@@ -11,3 +11,7 @@ https://github.com/raspberrypi/utils
 
 * compile kernel
 https://www.raspberrypi.com/documentation/computers/linux_kernel.html#updating-your-kernel
+
+* 50 pi projects
+https://all3dp.com/1/best-raspberry-pi-projects/
+
