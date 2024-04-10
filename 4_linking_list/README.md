@@ -13,6 +13,8 @@ example: <br>
 linking_list.c  <br>
 linking_list_addhead.c <br>
 
+Q:程式有沒有什麼問題？
+
 exercise: <br>
 結合GPIO， 寫linking list程式。 <br>
 1. 能輸入數字，數字為要輸入成 linking list 的value
