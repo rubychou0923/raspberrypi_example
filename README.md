@@ -11,3 +11,9 @@ https://github.com/raspberrypi/utils
 
 * compile kernel
 https://www.raspberrypi.com/documentation/computers/linux_kernel.html#updating-your-kernel
+
+* 50 pi projects
+https://all3dp.com/1/best-raspberry-pi-projects/
+
+* pi digital-oscilloscope
+  https://www.hackster.io/sainisagar7294/raspberry-pi-pico-200khz-digital-oscilloscope-e55ed6#toc-jlcpcb-11
