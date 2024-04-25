@@ -17,3 +17,10 @@ https://all3dp.com/1/best-raspberry-pi-projects/
 
 * pi digital-oscilloscope
   https://www.hackster.io/sainisagar7294/raspberry-pi-pico-200khz-digital-oscilloscope-e55ed6#toc-jlcpcb-11
+
+* uart
+![keyword](pic/uart.png) <br>
+
+* wifi config
+![keyword](pic/wifi.png) <br>
+
