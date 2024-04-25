@@ -22,4 +22,14 @@ exercise: <br>
 3. 按push button可以刪除liking list的頭。 
 4. 無限loop 1~3
 
+* double link list
+https://www.codecademy.com/article/doubly-linked-list-conceptual
 
+EX:double_link_list.c
+
+exercise: <br>
+1. 能輸入數字，數字為要輸入成 linking list 的value
+EX: test_sorted_link_list 1 5 7 4
+2. 加入linking list 要能從小排到大
+3. 然後從頭印到尾, 
+EX: 1 4 5 7
