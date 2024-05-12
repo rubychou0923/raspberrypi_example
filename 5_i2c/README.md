@@ -14,3 +14,8 @@ https://coldnew.github.io/f0528f55/
 https://lektiondestages.art.blog/2020/03/20/using-a-24c256-24lc256-eeprom-on-raspberry-pi-with-device-overlays/
 
 dtc -O dtb -o at24c256.dtbo -b 0 -@ at24c256.dts ; sudo  cp at24c256.dtbo  /boot/overlays
+
+
+*dump 
+sudo hexdump /sys/class/i2c-dev/i2c-1/device/1-0050/eeprom
+

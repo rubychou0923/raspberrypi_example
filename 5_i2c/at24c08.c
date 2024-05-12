@@ -58,7 +58,7 @@
  * zero but does generate a following stop condition.
  */
 static int Random_read(int fd, unsigned char addr, 
-				unsigned char offset, unsigned char *buf)
+				unsigned char oset, unsigned char *buf)
 {
 	struct i2c_rdwr_ioctl_data msgset;
 	struct i2c_msg msgs[2];
@@ -67,7 +67,7 @@ static int Random_read(int fd, unsigned char addr,
 	msgs[0].addr	= addr & 0xff;
 	msgs[0].flags	= I2C_M_WR;
 	msgs[0].len	= 1;
-	msgs[0].buf	= &offset;
+	msgs[0].buf	= &oset;
 
 	msgs[1].addr	= addr & 0xff;
 	msgs[1].flags	= I2C_M_RD;
@@ -116,7 +116,7 @@ static int Random_read(int fd, unsigned char addr,
  * following stop condition.
  */
 static int Sequen_read(int fd, unsigned char addr,
-			unsigned char offset, unsigned char *buf, int len)
+			unsigned char oset, unsigned char *buf, int len)
 {
 	struct i2c_rdwr_ioctl_data msgset;
 	struct i2c_msg msgs[2];
@@ -125,7 +125,7 @@ static int Sequen_read(int fd, unsigned char addr,
 	msgs[0].addr	= addr & 0xff;
 	msgs[0].flags	= I2C_M_WR;
 	msgs[0].len	= 1;
-	msgs[0].buf	= &offset;
+	msgs[0].buf	= &oset;
 
 	msgs[1].addr	= addr & 0xff;
 	msgs[1].flags	= I2C_M_RD;
@@ -223,7 +223,7 @@ static int Current_Address_read(int fd, unsigned char addr, unsigned char *buf)
  * and the EEPROM will not respond until the write is complete.
  *
  */
-static int Byte_write(int fd, unsigned char addr, unsigned char offset, 
+static int Byte_write(int fd, unsigned char addr, unsigned char oset, 
 					unsigned char data)
 {
 	struct i2c_rdwr_ioctl_data msgset;
@@ -232,14 +232,14 @@ static int Byte_write(int fd, unsigned char addr, unsigned char offset,
 	int rc;
 
     printf("[%s:%d] write 0x%2x, addr:0x%x, value:%c=0x%2x\n",__func__,__LINE__,
-                    addr, offset, data, data);
-	tmp[0]		= offset;
+                    addr, oset, data, data);
+	tmp[0]		= oset;
 	tmp[1]		= data;
 	msgs.addr	= addr & 0xff;
 	msgs.flags	= I2C_M_WR;
 	msgs.len	= 2;
 	msgs.buf	= &tmp;
-	//msgs.buf[0]	= offset;
+	//msgs.buf[0]	= oset;
 	//msgs.buf[1]	= data;
 
 	msgset.msgs	= &msgs;
@@ -293,7 +293,7 @@ static int Byte_write(int fd, unsigned char addr, unsigned char offset,
  * and previous data will overwritten. 
  *
  */
-static int Page_write(int fd, unsigned char addr, unsigned char offset,
+static int Page_write(int fd, unsigned char addr, unsigned char oset,
 				unsigned char *buf, int len)
 {
 	struct i2c_rdwr_ioctl_data msgset;
@@ -303,7 +303,7 @@ static int Page_write(int fd, unsigned char addr, unsigned char offset,
 
 	/* malloc */
 	tmp = malloc(len + 1);
-	tmp[0] = offset;
+	tmp[0] = oset;
 	memcpy(&tmp[1], buf, len);
 
 	msgs.addr	= addr & 0xff;
@@ -355,8 +355,8 @@ int main()
 	}
 #else
 #if 1
-    addr=10;
-	while (addr<32) {
+    addr=0;
+	while (addr<256) {
         buf[0]='a';
 	    ret = Byte_write(fd, I2C_ADDR, addr, buf[0]);
         //printf("[%s:%d] addr:0x%2x:%d value:%x\n",__func__,__LINE__,addr,addr,buf[0]);
@@ -380,10 +380,10 @@ int main()
         sleep(0.5);
 	}
 #endif
-    addr=10;
+    addr=0;
     buf[0]=0;
 	while (addr<32) {
-		ret = Sequen_read(fd, I2C_ADDR, addr, buf, 1);
+		ret = Random_read(fd, I2C_ADDR, addr, buf, 1);
 		//ret = Random_read(fd, I2C_ADDR, addr, buf);
         printf("[%s:%d] addr:0x%2x value:0x%2x\n",__func__,__LINE__,addr,buf[0]);
         addr++;
