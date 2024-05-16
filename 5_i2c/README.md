@@ -22,11 +22,11 @@ ruby@raspberrypi:~/git/raspberrypi_example/5_i2c $ dmesg |grep at24<br>
 [    9.390589] at24 1-0050: 32768 byte 24c256 EEPROM, writable, 64 bytes/write<br>
 
 
-*可以對EEPROM 當成檔案操作 <br>
+* 可以對EEPROM 當成檔案操作 <br>
 sudo hexdump /sys/class/i2c-dev/i2c-1/device/1-0050/eeprom<br>
 
 
-*Exercise:<br>
+* Exercise:<br>
 寫一個程式類似産測可以寫入SN，MAC，Project code　<br>
 (1) ./at24c256_16 -p "ODSCXXX" -m "2312323422" -s "ADFQDWQFWF"<br>
 (2) 也可以讀出寫入的SN，MAC，Project code<br>
