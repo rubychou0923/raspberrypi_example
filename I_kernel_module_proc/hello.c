@@ -14,7 +14,7 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/proc_fs.h>
-#include <asm/uaccess.h>
+#include <linux/uaccess.h>
 
 #define BUFFER_SIZE 128
 
@@ -27,9 +27,9 @@
 static ssize_t proc_read(struct file *file, char *buf, size_t count, loff_t *pos);
 static ssize_t proc_write(struct file *file, const char *buf, size_t count, loff_t *pos);
 
-static struct proc_ops proc_ops = {
-        .proc_read = proc_read,
-        .proc_write = proc_write,
+static struct file_operations proc_ops = {
+        .read = proc_read,
+        .write = proc_write,
 };
 
 
