@@ -109,3 +109,9 @@ https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
 
 
 pdf page 92
+
+
+```
+sudo pinctrl set 4 op  dl
+sudo pinctrl set 4 op  dh
+```
